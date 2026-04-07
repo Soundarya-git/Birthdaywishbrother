@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Wishes 🎉</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --neon-pink: #ff00ff;
+    --neon-blue: #00f2ff;
+    --neon-yellow: #fefe33;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    /* Animated Party Gradient */
+    background: linear-gradient(-45deg, #0f172a, #1e1b4b, #312e81, #1e1b4b);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    text-align: center;
+    color: white;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Pages */
+.page {
+    display: none;
+    animation: zoomIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 10;
+    padding: 20px;
+}
+
+.active {
+    display: block;
+}
+
+@keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Neon Text Effects */
+h1 {
+    font-size: 2.8rem;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: 
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px var(--neon-blue),
+        0 0 42px var(--neon-blue),
+        0 0 82px var(--neon-blue);
+    animation: flicker 2s infinite alternate;
+}
+
+@keyframes flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px var(--neon-blue), 0 0 42px var(--neon-blue);
+    }
+    20%, 24%, 55% {       
+        text-shadow: none;
+    }
+}
+
+p {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: #e2e8f0;
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+/* Neon Buttons */
+button {
+    padding: 15px 35px;
+    margin: 15px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: 2px solid var(--neon-pink);
+    border-radius: 50px;
+    cursor: pointer;
+    background: transparent;
+    color: var(--neon-pink);
+    box-shadow: 0 0 10px var(--neon-pink);
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+button:hover {
+    background: var(--neon-pink);
+    color: white;
+    box-shadow: 0 0 30px var(--neon-pink);
+    transform: translateY(-5px);
+}
+
+/* Special styling for 'No' button */
+#noBtn {
+    border-color: var(--neon-yellow);
+    color: var(--neon-yellow);
+    box-shadow: 0 0 10px var(--neon-yellow);
+}
+
+/* Floating emojis */
+.emoji {
+    position: absolute;
+    font-size: 30px;
+    user-select: none;
+    pointer-events: none;
+    z-index: 1;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
+}
+
+@keyframes fall {
+    0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
+
+/* No button "Poof" animation */
+.rotateHide {
+    animation: poof 0.6s forwards;
+}
+
+@keyframes poof {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.5); opacity: 0.5; filter: blur(5px); }
+    100% { transform: scale(0); opacity: 0; }
+}
+
+.highlight {
+    color: var(--neon-yellow);
+    font-weight: bold;
+    text-shadow: 0 0 10px var(--neon-yellow);
+}
+</style>
+</head>
+
+<body>
+
+<div id="page1" class="page active">
+    <h1>🎉 HAPPY BIRTHDAY 🎂</h1>
+    <p>Ready for a surprise? 😎✨</p>
+    <button onclick="nextPage(2)">CLICK TO OPEN 🎁</button>
+</div>
+
+
+<div id="page2" class="page">
+    <h1 style="color: var(--neon-yellow); text-shadow: 0 0 20px var(--neon-yellow);">😜 Oru Question!</h1>
+    <p>Nee oru loosudaan... correct-ah? 😂</p>
+
+    <button onclick="yesClicked()">Yes, Kandippa! 😄</button>
+    <button id="noBtn" onclick="noClicked()">No Way! 🙄</button>
+</div>
+
+
+<div id="page3" class="page">
+    <h1 style="font-size: 2rem;">🎊 BIRTHDAY BOY 🎊</h1>
+
+    <p>
+        Thambi, ni enaku verum thambi matum alla...<br>
+        Oru <span class="highlight">Appavum kuda</span> ❤️ (Family Hero 😎)<br><br>
+
+        Enga family kaga ni itlo kashtapadura...<br>
+        Athuku big <span class="highlight">Thanks!</span> 🙏<br><br>
+
+        Iniku treat romba semma! 🍗🍰<br>
+        Vayiru full-ah iruku, manasum happy-ah iruku!<br><br>
+
+        <span style="font-size: 1.5rem;">🥳 <b>Piranthanal Valuthukal!</b> 🎉</span>
+    </p>
+</div>
+
+
+<script>
+/* Page Switch Logic */
+function nextPage(num){
+    document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+    document.getElementById("page" + num).classList.add("active");
+    
+    // Trigger extra burst of emojis on page change
+    for(let i=0; i<15; i++) {
+        setTimeout(createEmoji, i * 100);
+    }
+}
+
+/* Yes Button Logic */
+function yesClicked(){
+    nextPage(3);
+}
+
+/* No Button Logic */
+function noClicked(){
+    let btn = document.getElementById("noBtn");
+    btn.classList.add("rotateHide");
+    // Force them to click Yes after a second
+    setTimeout(() => {
+        alert("Nice try! But you have no choice 😂 Click YES!");
+    }, 700);
+}
+
+/* Enhanced Floating Emoji Engine */
+const emojis = ["🎉", "🎂", "✨", "😎", "🥳", "🎁", "🔥", "🍰", "🎈", "🎊", "🌟", "🍗"];
+
+function createEmoji() {
+    const e = document.createElement("div");
+    e.className = "emoji";
+    e.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+    
+    const startLeft = Math.random() * 100;
+    const duration = 3 + Math.random() * 4;
+    const size = 15 + Math.random() * 30;
+
+    e.style.left = startLeft + "vw";
+    e.style.fontSize = size + "px";
+    e.style.animation = `fall ${duration}s linear forwards`;
+    
+    document.body.appendChild(e);
+
+    // Remove emoji after animation finishes
+    setTimeout(() => e.remove(), duration * 1000);
+}
+
+// Continuous background rain
+setInterval(createEmoji, 400);
+
+</script>
+
+</body>
+</html>
